@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 class Edit extends React.Component {
@@ -39,7 +40,9 @@ class Edit extends React.Component {
                         onChange={e => this.setState({image: e.target.value})}/>
                     </div>
                 </form>
+                <Link to={"/"}>
                 <button className="ui button" onClick={()=>this.props.addItem(this.state)}>Submit</button>
+                </Link>
             </div>
         )
     }

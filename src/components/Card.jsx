@@ -24,7 +24,7 @@ class Card
                 <div class="extra content">
                     <div class="large ui buttons">
                         <button class="ui button">Edit</button>
-                        <button class="ui button">Delete</button>
+                        <button class="ui button" onClick={()=>this.props.removeItem(this.props.item.id)}>Delete</button>
                     </div>
                 </div>
             </div>
