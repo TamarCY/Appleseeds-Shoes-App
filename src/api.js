@@ -18,6 +18,10 @@ export default class api{
     static removeItem = async (id) => {
        return await baseURL.delete(id)
     }
+
+    static putItem = async (item, id) => {
+        return await baseURL.put(`/${id}`,item)
+    }
 }
 
 

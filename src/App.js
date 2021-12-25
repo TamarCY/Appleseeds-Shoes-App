@@ -9,11 +9,17 @@ import EditWrapper from "./components/EditWrapper"
 class App extends React.Component {
   state = {
     data: [],
+    itemToEdit:{}
   };
+
+
+// TODO: add errors handling = try & catch to all the async functions
+
 
   getData = async () => {
     const data = await api.getItems();
     this.setState({ data });
+    
   };
 
   addItem = async (data) => {
@@ -25,14 +31,18 @@ class App extends React.Component {
 
   removeItem = async (id) => {
     const response = await api.removeItem(id);
-    // TODO: add errors handling = try & catch
       this.getData();
   };
 
 
   handleEdit = (id, item) => {
     console.log(item);
-    return this.state.data.find((item) => {return item.id === +id});
+    this.setState({itemToEdit:item})
+    // return this.state.data.find((item) => {return item.id === +id});
+  }
+
+  putEditItem = (item) => {
+    console.log(item.id, item);
   }
 
   componentDidMount = () => {
@@ -58,7 +68,9 @@ class App extends React.Component {
               path="/add"
               element={<Edit items={this.state.data} addItem={this.addItem}/>}
             />
-            <Route path="/edit/:id" element={<EditWrapper  />}/>
+            <Route path="/edit/:id" element={<EditWrapper  itemToEdit={this.state.itemToEdit} 
+            addItem={this.putEditItem}/>}/>
+            {/* TODO: change addItem prop the to more general name in all the components */}
           </Routes>
         </BrowserRouter>
       </div>

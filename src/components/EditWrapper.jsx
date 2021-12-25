@@ -5,5 +5,5 @@ import Edit from "../pages/Edit";
 export default function ItemEditPageWrapper(props) {
   const { id } = useParams();
   return (
-  <Edit id={id} getOneItem={props.getOneItem} edit={true}></Edit>)
+  <Edit id={id} getOneItem={props.getOneItem} edit={true} itemToEdit={props.itemToEdit} addItem={props.addItem}></Edit>)
 }
