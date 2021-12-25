@@ -30,7 +30,7 @@ class App extends React.Component {
   };
 
   removeItem = async (id) => {
-    const response = await api.removeItem(id);
+     await api.removeItem(id);
       this.getData();
   };
 
