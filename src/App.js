@@ -41,8 +41,9 @@ class App extends React.Component {
     // return this.state.data.find((item) => {return item.id === +id});
   }
 
-  putEditItem = (item) => {
-    console.log(item.id, item);
+  putEditedItem = async (item) => {
+    await api.putItem(item.id, item);
+    this.getData()
   }
 
   componentDidMount = () => {
@@ -69,7 +70,7 @@ class App extends React.Component {
               element={<Edit items={this.state.data} addItem={this.addItem}/>}
             />
             <Route path="/edit/:id" element={<EditWrapper  itemToEdit={this.state.itemToEdit} 
-            addItem={this.putEditItem}/>}/>
+            addItem={this.putEditedItem}/>}/>
             {/* TODO: change addItem prop the to more general name in all the components */}
           </Routes>
         </BrowserRouter>

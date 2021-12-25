@@ -4,10 +4,11 @@ import { Link } from "react-router-dom";
 
 class Edit extends React.Component {
     state ={
-        name: this.props.name,
-        color: this.props.color,
-        price: this.props.price,
-        image: this.props.image
+        name: this.props.itemToEdit.name,
+        color: this.props.itemToEdit.color,
+        price: this.props.itemToEdit.price,
+        image: this.props.itemToEdit.image,
+        id: this.props.itemToEdit.id
 
     }
 
