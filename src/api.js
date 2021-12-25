@@ -11,7 +11,6 @@ export default class api{
         return data
     }
 
-
     static postItem = async (item) => {
      return await baseURL.post("/",item)
     }
@@ -20,5 +19,6 @@ export default class api{
        return await baseURL.delete(id)
     }
 }
+
 
 

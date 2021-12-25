@@ -10,10 +10,16 @@ class Edit extends React.Component {
         image: ""
 
     }
+    addItemToState = () => {
+        
+    }
+
     render() {
         return (
             <div className="ui container">
-                <h2>Add New Item</h2>
+                {(this.props.edit)?
+                <h2>Edit Item</h2>:
+                <h2>Add New Item</h2>}
                 <form className="ui form">
                     <div className="field">
                         <label> Name</label>

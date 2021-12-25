@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 
 class Card
     extends React.Component {
+    
+    
     render() {
-        console.log(this.props.item);
-
         return (
             <div className="card">
                 <div className="image">
@@ -16,15 +17,19 @@ class Card
                     <div className="color">
                         {this.props.item.color}
                     </div>
-                    <div class="meta">
-                        <span class="date">{this.props.item.price} $</span>
+                    <div className="meta">
+                        <span className="date">{this.props.item.price} $</span>
                     </div>
                 </div>
 
-                <div class="extra content">
-                    <div class="large ui buttons">
-                        <button class="ui button">Edit</button>
-                        <button class="ui button" onClick={()=>this.props.removeItem(this.props.item.id)}>Delete</button>
+                <div className="extra content">
+                    <div className="large ui buttons">
+                        <Link to={`/edit/${this.props.item.id}`}>
+                        <button className="ui button"
+                        onClick={()=>this.props.handleEdit(this.props.item.id, this.props.item)}>Edit</button>
+                        </Link>
+                        <button className="ui button" 
+                        onClick={()=>this.props.removeItem(this.props.item.id)}>Delete</button>
                     </div>
                 </div>
             </div>

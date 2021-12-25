@@ -4,11 +4,15 @@ import Card from "../components/Card";
 
 class Home extends React.Component {
     renderCards = () => {
-       return  this.props.items.map((item) => {return <Card item={item} removeItem={this.props.removeItem}/>})
+        return this.props.items.map((item) => {
+            return <Card item={item}
+                key={item.id}
+                removeItem={this.props.removeItem} 
+                handleEdit={this.props.handleEdit} />
+        })
     }
     render() {
-        console.log(this.props);
-        if (!this.props.items){ return <div>???</div> }
+        if (!this.props.items) { return <div>???</div> }
         // TODO: add spinner
         return (
             <div>

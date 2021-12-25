@@ -29,6 +29,12 @@ class App extends React.Component {
     this.getData();
   };
 
+
+  handleEdit = (id, item) => {
+    console.log(item);
+    return this.state.data.find((item) => {return item.id === +id});
+  }
+
   componentDidMount = () => {
     this.getData();
   };
@@ -45,14 +51,14 @@ class App extends React.Component {
             <Route
               path="/"
               element={
-                <Home items={this.state.data} removeItem={this.removeItem} />
+                <Home items={this.state.data} removeItem={this.removeItem} handleEdit={this.handleEdit}/>
               }
             />
             <Route
               path="/add"
-              element={<Edit items={this.state.data} addItem={this.addItem} />}
+              element={<Edit items={this.state.data} addItem={this.addItem}/>}
             />
-            <Route path="/edit/:id" element={<EditWrapper/>}/>
+            <Route path="/edit/:id" element={<EditWrapper  />}/>
           </Routes>
         </BrowserRouter>
       </div>
