@@ -20,7 +20,6 @@ class Edit extends React.Component {
 
     render() {
         if (!this.props) { return <div></div> }
-        console.log(this.state);
         return (
             <div className="ui container">
                 {(this.props.edit) ?

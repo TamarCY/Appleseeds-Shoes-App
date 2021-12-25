@@ -32,7 +32,6 @@ class App extends React.Component {
   };
 
   handleEdit = (id, item) => {
-    console.log(item);
     this.setState({ itemToEdit: item });
   };
 
@@ -66,7 +65,7 @@ class App extends React.Component {
             />
             <Route
               path="/add"
-              element={<Edit items={this.state.data} addItem={this.addItem} />}
+              element={<Edit items={this.state.data} addItem={this.addItem} itemToEdit={{name:"",color:"",id:"",image:"",price:""}}/>}
             />
             <Route
               path="/edit/:id"
