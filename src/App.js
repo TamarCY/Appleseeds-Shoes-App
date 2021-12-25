@@ -25,8 +25,8 @@ class App extends React.Component {
 
   removeItem = async (id) => {
     const response = await api.removeItem(id);
-    console.log(response);
-    this.getData();
+    // TODO: add errors handling = try & catch
+      this.getData();
   };
 
 
