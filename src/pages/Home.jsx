@@ -7,7 +7,7 @@ class Home extends React.Component {
         return this.props.items.map((item) => {
             return <Card item={item}
                 key={item.id}
-                removeItem={this.props.removeItem} 
+                removeItem={this.props.removeItem}
                 handleEdit={this.props.handleEdit} />
         })
     }

@@ -4,22 +4,19 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import Navbar from "./components/Navbar";
 import Edit from "./pages/Edit";
-import EditWrapper from "./components/EditWrapper"
+import EditWrapper from "./components/EditWrapper";
 
 class App extends React.Component {
   state = {
     data: [],
-    itemToEdit:{}
+    itemToEdit: {},
   };
 
-
-// TODO: add errors handling = try & catch to all the async functions
-
+  // TODO: add errors handling = try & catch to all the async functions
 
   getData = async () => {
     const data = await api.getItems();
     this.setState({ data });
-    
   };
 
   addItem = async (data) => {
@@ -30,21 +27,19 @@ class App extends React.Component {
   };
 
   removeItem = async (id) => {
-     await api.removeItem(id);
-      this.getData();
+    await api.removeItem(id);
+    this.getData();
   };
-
 
   handleEdit = (id, item) => {
     console.log(item);
-    this.setState({itemToEdit:item})
-    // return this.state.data.find((item) => {return item.id === +id});
-  }
+    this.setState({ itemToEdit: item });
+  };
 
   putEditedItem = async (item) => {
     await api.putItem(item.id, item);
-    this.getData()
-  }
+    this.getData();
+  };
 
   componentDidMount = () => {
     this.getData();
@@ -62,15 +57,26 @@ class App extends React.Component {
             <Route
               path="/"
               element={
-                <Home items={this.state.data} removeItem={this.removeItem} handleEdit={this.handleEdit}/>
+                <Home
+                  items={this.state.data}
+                  removeItem={this.removeItem}
+                  handleEdit={this.handleEdit}
+                />
               }
             />
             <Route
               path="/add"
-              element={<Edit items={this.state.data} addItem={this.addItem}/>}
+              element={<Edit items={this.state.data} addItem={this.addItem} />}
             />
-            <Route path="/edit/:id" element={<EditWrapper  itemToEdit={this.state.itemToEdit} 
-            addItem={this.putEditedItem}/>}/>
+            <Route
+              path="/edit/:id"
+              element={
+                <EditWrapper
+                  itemToEdit={this.state.itemToEdit}
+                  addItem={this.putEditedItem}
+                />
+              }
+            />
             {/* TODO: change addItem prop the to more general name in all the components */}
           </Routes>
         </BrowserRouter>
